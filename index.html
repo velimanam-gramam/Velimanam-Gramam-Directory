@@ -1,957 +1,903 @@
 <!DOCTYPE html>
 <html lang="ml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>വെളിമാനം ഗ്രാമം | Velimanam Gramam Directory</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Noto Sans Malayalam -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans Malayalam"', 'Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        kerala: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            600: '#15803d',
-                            700: '#166534',
-                            800: '#14532d',
-                            900: '#064e3b',
-                        },
-                        gold: {
-                            100: '#fef3c7',
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>വെളിമാനം ഗ്രാമം | Velimanam Gramam Directory</title>
+  <!-- Google Fonts for Malayalam & English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #1b4332;
+      --primary-light: #2d6a4f;
+      --accent: #d97706;
+      --bg: #f4f7f4;
+      --card-bg: #ffffff;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --whatsapp: #16a34a;
+      --call: #1d4ed8;
+    }
 
-    <style>
-        /* Custom scrollbar hiding for horizontal pill bar */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        /* Smooth tap highlights for mobile elders */
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-        body {
-            background-color: #f8fafc;
-        }
-    </style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Manjari', 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding-bottom: 90px;
+      line-height: 1.45;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 18px 16px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 720px;
+      margin: 0 auto 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+
+    .brand-title h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-title p {
+      font-size: 0.78rem;
+      opacity: 0.9;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.05rem;
+      transition: background 0.2s;
+    }
+
+    .icon-btn:active {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Search Bar */
+    .search-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 13px 40px 13px 42px;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.98rem;
+      font-family: inherit;
+      background: #ffffff;
+      color: var(--text-main);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: #9ca3af;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .clear-search {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #e5e7eb;
+      border: none;
+      color: #4b5563;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Category Filter Pills */
+    .filter-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 120px;
+      z-index: 40;
+    }
+
+    .filter-scroll {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 16px;
+      scrollbar-width: none;
+    }
+
+    .filter-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: inherit;
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .pill.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(27, 67, 50, 0.25);
+    }
+
+    /* Status Bar */
+    .status-bar {
+      max-width: 720px;
+      margin: 12px auto 4px;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .sync-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #dcfce7;
+      color: #166534;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.74rem;
+    }
+
+    .sync-dot {
+      width: 7px;
+      height: 7px;
+      background: #16a34a;
+      border-radius: 50%;
+    }
+
+    /* Main Cards Container */
+    .container {
+      max-width: 720px;
+      margin: 8px auto 0;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #111827;
+      line-height: 1.3;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-auto { background: #fef3c7; color: #92400e; }
+    .badge-shops { background: #dbeafe; color: #1e40af; }
+    .badge-services { background: #e0e7ff; color: #3730a3; }
+    .badge-medical { background: #d1fae5; color: #065f46; }
+    .badge-emergency { background: #fee2e2; color: #991b1b; }
+    .badge-other { background: #f3f4f6; color: #374151; }
+
+    .card-service {
+      font-size: 0.94rem;
+      color: #374151;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      padding-top: 2px;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 12px;
+      border-radius: 11px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .btn-action:active {
+      transform: scale(0.98);
+    }
+
+    .btn-call {
+      background: #eff6ff;
+      color: var(--call);
+      border: 1px solid #bfdbfe;
+    }
+
+    .btn-wa {
+      background: #f0fdf4;
+      color: var(--whatsapp);
+      border: 1px solid #bbf7d0;
+    }
+
+    /* Empty & Loading States */
+    .empty-state {
+      text-align: center;
+      padding: 44px 20px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: inherit;
+      box-shadow: 0 6px 20px rgba(27, 67, 50, 0.38);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 60;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      padding: 0;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #fff;
+      width: 100%;
+      max-width: 560px;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 18px 26px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    @media (min-width: 600px) {
+      .modal-backdrop {
+        align-items: center;
+        padding: 16px;
+      }
+      .modal {
+        border-radius: 18px;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h2 {
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .close-btn {
+      background: #f3f4f6;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #374151;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--whatsapp);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+  </style>
 </head>
-<body class="text-slate-800 antialiased selection:bg-emerald-600 selection:text-white min-h-screen flex flex-col">
+<body>
 
-    <!-- ========================================== -->
-    <!-- HEADER SECTION (Kerala Green & Warm Gold)  -->
-    <!-- ========================================== -->
-    <header class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-green-900 text-white shadow-lg relative overflow-hidden">
-        <!-- Decorative subtle background pattern -->
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" preserveAspectRatio="none">
-                <path d="M0,160 C200,80 350,200 550,120 C680,70 750,140 800,110 L800,200 L0,200 Z" fill="#fbbf24"/>
-                <path d="M0,180 C250,130 450,220 800,140 L800,200 L0,200 Z" fill="#ffffff"/>
-            </svg>
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-icon">🌴</div>
+        <div class="brand-title">
+          <h1>വെളിമാനം ഗ്രാമം</h1>
+          <p>Velimanam Community Directory</p>
         </div>
-
-        <div class="max-w-5xl mx-auto px-4 pt-5 pb-4 relative z-10">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                
-                <!-- Brand Emblem & Village Name -->
-                <div class="flex items-center gap-3.5">
-                    <!-- Custom Circular Village Emblem SVG -->
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-b from-amber-300 to-amber-500 p-0.5 shadow-md shrink-0 flex items-center justify-center">
-                        <div class="w-full h-full rounded-full bg-emerald-950 flex items-center justify-center overflow-hidden relative">
-                            <svg viewBox="0 0 64 64" class="w-12 h-12">
-                                <!-- Rising Sun -->
-                                <circle cx="32" cy="26" r="10" fill="#fbbf24" opacity="0.9"/>
-                                <!-- Western Ghats Hills -->
-                                <path d="M4 46 Q20 26 36 42 T60 38 L60 60 L4 60 Z" fill="#15803d"/>
-                                <path d="M4 52 Q28 38 48 48 T60 46 L60 60 L4 60 Z" fill="#166534"/>
-                                <!-- Winding Village River/Road -->
-                                <path d="M28 45 Q34 52 22 60 L32 60 Q42 52 33 45 Z" fill="#fcd34d"/>
-                                <!-- Coconut Palm Silhouette -->
-                                <path d="M18 48 Q20 34 23 24" stroke="#064e3b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                                <path d="M23 24 Q15 22 12 27 M23 24 Q17 18 22 15 M23 24 Q29 18 32 22 M23 24 Q28 25 30 30" stroke="#34d399" stroke-width="2" fill="none" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-medium mb-1">
-                            <span>🌴 കണ്ണൂർ • Kannur, Kerala</span>
-                        </div>
-                        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
-                            വെളിമാനം ഗ്രാമം
-                        </h1>
-                        <p class="text-emerald-100 text-xs sm:text-sm font-medium mt-0.5">
-                            പ്രാദേശിക ഡയറക്ടറി • Velimanam Local Directory
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Top Action Buttons -->
-                <div class="flex items-center gap-2 sm:self-center">
-                    <button onclick="openAddModal()" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-emerald-950 font-bold text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-sm transition">
-                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                        </svg>
-                        <span>+ ചേർക്കാൻ / Add Listing</span>
-                    </button>
-
-                    <button onclick="shareDirectoryOnWhatsApp()" class="inline-flex items-center justify-center gap-1.5 bg-emerald-700/80 hover:bg-emerald-700 active:bg-emerald-800 border border-emerald-500/40 text-white font-semibold text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-sm transition" title="Share Directory on WhatsApp">
-                        <svg class="w-4 h-4 text-emerald-300 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.625.846 5.059 2.284 7.033l-1.492 5.451 5.602-1.469c1.908 1.258 4.188 1.985 6.606 1.985 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/>
-                        </svg>
-                        <span>Share</span>
-                    </button>
-
-                    <button onclick="openAdminModal()" class="p-2.5 rounded-xl bg-emerald-800/70 hover:bg-emerald-700 border border-emerald-600/40 text-emerald-200 transition" title="Google Sheets Setup & Admin">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <!-- ========================================== -->
-    <!-- STICKY SEARCH & CATEGORY FILTER PILLS      -->
-    <!-- ========================================== -->
-    <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-5xl mx-auto px-4 py-3 space-y-2.5">
-            
-            <!-- Instant Search Input -->
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                    </svg>
-                </div>
-                <input 
-                    id="searchInput"
-                    type="search" 
-                    placeholder="തിരയുക / Search auto, taxi, shop, electrician, location..." 
-                    class="w-full pl-11 pr-10 py-3 bg-slate-100 hover:bg-slate-100/80 focus:bg-white rounded-xl border border-slate-200 focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 text-sm sm:text-base text-slate-800 placeholder-slate-400 outline-none transition"
-                    oninput="handleSearch(this.value)"
-                >
-                <button 
-                    id="clearSearchBtn" 
-                    onclick="clearSearch()" 
-                    class="hidden absolute inset-y-0 right-0 pr-3.5 items-center text-slate-400 hover:text-slate-600"
-                    aria-label="Clear search"
-                >
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Horizontal Scrollable Category Filter Pills -->
-            <div id="categoryPillsContainer" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-0.5">
-                <!-- Populated dynamically via JS -->
-            </div>
-        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="refreshBtn" title="Refresh Data">🔄</button>
+      </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- MAIN DIRECTORY CONTENT (KANBAN CARDS)      -->
-    <!-- ========================================== -->
-    <main class="max-w-5xl mx-auto w-full px-4 py-5 flex-1">
-        
-        <!-- Status / Count Bar -->
-        <div class="flex items-center justify-between mb-4">
-            <p id="resultsCountText" class="text-xs sm:text-sm font-medium text-slate-500">
-                Loading directory...
-            </p>
-            <div id="syncBadge" class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span id="syncStatusLabel">വെളിമാനം ഡയറക്ടറി • Ready</span>
-            </div>
-        </div>
-
-        <!-- Cards Grid (Single column on mobile, 2 on tablet, 3 on desktop) -->
-        <div id="directoryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Populated by JavaScript -->
-        </div>
-
-        <!-- Empty State -->
-        <div id="emptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-8 text-center my-6 max-w-md mx-auto shadow-sm">
-            <div class="w-14 h-14 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-3 text-2xl">
-                🔍
-            </div>
-            <h3 class="text-lg font-bold text-slate-800">വിവരങ്ങൾ കണ്ടെത്തിയില്ല / No Matches Found</h3>
-            <p class="text-sm text-slate-500 mt-1 mb-5">
-                നിങ്ങൾ തിരയുന്ന പേര് അല്ലെങ്കിൽ സേവനം നിലവിൽ ലിസ്റ്റിൽ ഇല്ല. പുതിയ വിവരങ്ങൾ താഴെ കാണുന്ന ബട്ടൺ വഴി ചേർക്കാം.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-2 justify-center">
-                <button onclick="resetFilters()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition">
-                    എല്ലാം കാണിക്കുക (Show All)
-                </button>
-                <button onclick="openAddModal()" class="px-4 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm transition">
-                    + പുതിയ വിവരങ്ങൾ ചേർക്കാൻ
-                </button>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- ========================================== -->
-    <!-- FOOTER                                     -->
-    <!-- ========================================== -->
-    <footer class="bg-white border-t border-slate-200 mt-10">
-        <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-                <p class="font-bold text-emerald-900 text-sm">🌴 വെളിമാനം ഗ്രാമം വാട്സ്ആപ്പ് കൂട്ടായ്മ</p>
-                <p class="text-xs text-slate-500 mt-0.5">നമ്മുടെ നാട്ടിലെ ഓട്ടോ, ടാക്സി, കടകൾ, തൊഴിലാളികൾ എന്നിവരുടെ ഫോൺ നമ്പറുകൾ ഒരു കുടക്കീഴിൽ.</p>
-            </div>
-            <div class="flex items-center gap-3">
-                <button onclick="openAddModal()" class="text-xs font-semibold text-emerald-700 hover:text-emerald-800 underline">
-                    + Add Your Shop / Auto
-                </button>
-                <span class="text-slate-300">•</span>
-                <button onclick="openAdminModal()" class="text-xs font-semibold text-slate-500 hover:text-slate-700 underline">
-                    Google Sheet Sync Guide
-                </button>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ========================================== -->
-    <!-- MODAL 1: ADD LISTING (+ വിവരങ്ങൾ ചേർക്കാൻ) -->
-    <!-- ========================================== -->
-    <div id="addModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-xl border border-slate-100 my-8">
-            <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3.5">
-                <div>
-                    <h2 class="text-lg font-bold text-emerald-950">പുതിയ വിവരങ്ങൾ ചേർക്കാം</h2>
-                    <p class="text-xs text-slate-500">Add Shop, Auto/Taxi, or Local Service to Velimanam Directory</p>
-                </div>
-                <button onclick="closeAddModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-
-            <form id="addListingForm" onsubmit="handleAddListingSubmit(event)" class="space-y-3.5 mt-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">വിഭാഗം / Category *</label>
-                    <select id="formCategory" required class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm bg-white focus:border-emerald-600 outline-none">
-                        <option value="auto">🚕 Auto / Taxi (ഓട്ടോ / ടാക്സി)</option>
-                        <option value="shops">🛒 Shops (കടകൾ)</option>
-                        <option value="medical">🏥 Medical & Emergency (മെഡിക്കൽ / എമർജൻസി)</option>
-                        <option value="services">🔧 Services & Workers (തൊഴിലാളികൾ)</option>
-                        <option value="public">🩸 Blood & Public (പൊതുസേവനങ്ങൾ)</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">പേര് / സ്ഥാപനത്തിന്റെ പേര് (Name in Malayalam or English) *</label>
-                    <input id="formName" type="text" required placeholder="ഉദാ: രാജൻ ഓട്ടോ (Rajan Auto)" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-emerald-600 outline-none">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">സേവനങ്ങൾ / വാഹനം (Service or Vehicle Details) *</label>
-                    <input id="formDetails" type="text" required placeholder="ഉദാ: 24x7 Hospital Trips, Home Delivery, Electrician" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-emerald-600 outline-none">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">സ്ഥലം / Location *</label>
-                        <input id="formLocation" type="text" required placeholder="ഉദാ: Velimanam Town / പള്ളി കവല" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-emerald-600 outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">സമയം / Working Hours</label>
-                        <input id="formHours" type="text" placeholder="ഉദാ: 6 AM - 9 PM / 24x7" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-emerald-600 outline-none">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">ഫോൺ നമ്പർ / 10-Digit Mobile Number *</label>
-                    <input id="formPhone" type="tel" required pattern="[0-9+\s-]{10,15}" placeholder="9876543210" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-emerald-600 outline-none">
-                </div>
-
-                <div class="pt-2 flex flex-col sm:flex-row gap-2.5">
-                    <button type="submit" data-mode="instant" class="flex-1 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm py-3 px-4 rounded-xl shadow-sm transition flex items-center justify-center gap-2">
-                        <span>✅ ഡയറക്ടറിയിൽ ചേർക്കുക & WhatsApp അയക്കുക</span>
-                    </button>
-                </div>
-                <p class="text-[11px] text-slate-400 text-center">
-                    ഇത് നിങ്ങളുടെ ഫോണിൽ ഉടൻ കാണിക്കുകയും ഗ്രൂപ്പ് അഡ്മിന് വാട്സ്ആപ്പ് വഴി അയക്കുകയും ചെയ്യും.
-                </p>
-            </form>
-        </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="searchInput"
+        class="search-input"
+        placeholder="തിരയുക / Search auto, shops, name, place..."
+        autocomplete="off"
+      />
+      <button class="clear-search" id="clearSearchBtn">✕</button>
     </div>
+  </header>
 
-    <!-- ========================================== -->
-    <!-- MODAL 2: ADMIN & GOOGLE SHEETS SYNC GUIDE  -->
-    <!-- ========================================== -->
-    <div id="adminModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl max-w-xl w-full p-5 sm:p-6 shadow-xl border border-slate-100 my-8">
-            <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3.5">
-                <div>
-                    <h2 class="text-lg font-bold text-slate-900">⚙️ Google Sheets Live Sync & Admin Guide</h2>
-                    <p class="text-xs text-slate-500">Connect your free Google Sheet to update this village app automatically</p>
-                </div>
-                <button onclick="closeAdminModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
+  <!-- Category Filters -->
+  <div class="filter-bar">
+    <div class="filter-scroll" id="categoryPills">
+      <button class="pill active" data-cat="All">📋 എല്ലാം (All)</button>
+      <button class="pill" data-cat="Auto / Taxi">🚕 ഓട്ടോ / ടാക്സി</button>
+      <button class="pill" data-cat="Shops">🛒 കടകൾ (Shops)</button>
+      <button class="pill" data-cat="Services">🔧 സേവനങ്ങൾ (Services)</button>
+      <button class="pill" data-cat="Medical">🏥 മെഡിക്കൽ</button>
+      <button class="pill" data-cat="Emergency">🚨 എമർജൻസി</button>
+    </div>
+  </div>
 
-            <div class="space-y-4 mt-4 text-xs sm:text-sm text-slate-600">
-                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-emerald-950">
-                    <p class="font-bold mb-1">💡 100% Free Forever (No Glide Subscription Needed)</p>
-                    <p class="text-xs leading-relaxed">
-                        You can manage all shops, autos, and phone numbers inside a standard Google Sheet. Whenever you add a row in Google Sheets, every villager opening this link sees the updated directory immediately!
-                    </p>
-                </div>
+  <!-- Status & Count -->
+  <div class="status-bar">
+    <span id="resultCount">Loading directory...</span>
+    <span class="sync-badge" id="syncStatus">
+      <span class="sync-dot"></span> Live Google Sheet
+    </span>
+  </div>
 
-                <div class="space-y-2">
-                    <p class="font-bold text-slate-800">How to Connect Your Google Sheet in 3 Steps:</p>
-                    <ol class="list-decimal list-inside space-y-1.5 text-xs text-slate-600">
-                        <li>Click <strong>"Download CSV Template"</strong> below and import it into <strong>Google Sheets</strong>.</li>
-                        <li>In Google Sheets, go to <strong>File → Share → Publish to web</strong>, choose <strong>Comma-separated values (.csv)</strong>, and copy the link.</li>
-                        <li>Paste the link below (to test immediately) or paste it into <code class="bg-slate-100 px-1.5 py-0.5 rounded text-emerald-800 font-mono">GOOGLE_SHEET_CSV_URL</code> inside this file.</li>
-                    </ol>
-                </div>
+  <!-- Directory Cards -->
+  <main class="container" id="cardsContainer"></main>
 
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Live Google Sheet Published CSV URL (Optional):</label>
-                    <div class="flex gap-2">
-                        <input id="customSheetUrlInput" type="url" placeholder="https://docs.google.com/spreadsheets/d/e/.../pub?output=csv" class="flex-1 rounded-xl border border-slate-300 px-3 py-2 text-xs outline-none focus:border-emerald-600">
-                        <button onclick="saveCustomSheetUrl()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs px-3.5 py-2 rounded-xl shrink-0">
-                            Sync Sheet
-                        </button>
-                    </div>
-                </div>
+  <!-- Floating Add Listing Button -->
+  <button class="fab" id="openAddModalBtn">
+    <span>➕</span> ചേർക്കാൻ / Add Listing
+  </button>
 
-                <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-100">
-                    <button onclick="downloadCsvTemplate()" class="inline-flex items-center gap-1.5 bg-amber-100 hover:bg-amber-200 text-amber-900 font-semibold text-xs px-3.5 py-2.5 rounded-xl transition">
-                        📥 Download Sample CSV Template for Google Sheets
-                    </button>
-                    <button onclick="closeAdminModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-4 py-2.5 rounded-xl">
-                        Close
-                    </button>
-                </div>
-            </div>
+  <!-- Add Listing Modal (Sends formatted listing via WhatsApp) -->
+  <div class="modal-backdrop" id="addModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>പുതിയ വിവരങ്ങൾ ചേർക്കുക (Add Listing)</h2>
+        <button class="close-btn" id="closeAddModalBtn">✕</button>
+      </div>
+      <form id="addListingForm">
+        <div class="form-group">
+          <label>പേര് / സ്ഥാപനത്തിന്റെ പേര് (Name / Shop Name) *</label>
+          <input type="text" id="fName" class="form-control" placeholder="e.g., രാജൻ ഓട്ടോ (Rajan Auto)" required />
         </div>
+        <div class="form-group">
+          <label>വിഭാഗം (Category) *</label>
+          <select id="fCategory" class="form-control" required>
+            <option value="Auto / Taxi">🚕 Auto / Taxi (ഓട്ടോ / ടാക്സി)</option>
+            <option value="Shops">🛒 Shops (കടകൾ)</option>
+            <option value="Services">🔧 Services (സേവനങ്ങൾ)</option>
+            <option value="Medical">🏥 Medical (മെഡിക്കൽ)</option>
+            <option value="Emergency">🚨 Emergency (എമർജൻസി)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>സേവനങ്ങൾ (Service Details) *</label>
+          <input type="text" id="fService" class="form-control" placeholder="e.g., 24x7 Hospital & Local Trips" required />
+        </div>
+        <div class="form-group">
+          <label>സ്ഥലം (Location / Junction) *</label>
+          <input type="text" id="fLocation" class="form-control" placeholder="e.g., Velimanam Town / Church Jn" required />
+        </div>
+        <div class="form-group">
+          <label>ഫോൺ നമ്പർ (Phone Number) *</label>
+          <input type="tel" id="fPhone" class="form-control" placeholder="+919876543210" required />
+        </div>
+        <div class="form-group">
+          <label>സമയം (Working Hours)</label>
+          <input type="text" id="fHours" class="form-control" placeholder="e.g., 7:00 AM - 8:30 PM or 24 Hours" value="8:00 AM - 8:00 PM" />
+        </div>
+        <button type="submit" class="btn-submit">💬 Send Details to Admin on WhatsApp</button>
+      </form>
     </div>
+  </div>
 
-    <!-- ========================================== -->
-    <!-- TOAST NOTIFICATION                         -->
-    <!-- ========================================== -->
-    <div id="toast" class="fixed bottom-5 right-5 left-5 sm:left-auto z-50 hidden bg-slate-900 text-white text-xs sm:text-sm font-medium px-4 py-3 rounded-xl shadow-lg items-center justify-between gap-3 max-w-sm">
-        <span id="toastMessage">വിവരങ്ങൾ ചേർത്തു!</span>
-    </div>
+  <script>
+    // =========================================================================
+    // 1. LIVE GOOGLE SHEET CSV URL (Hardcoded to your published Velimanam Sheet)
+    // =========================================================================
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrIWHBhr5j0wsA85b63U-9y2cGkU5lzp9yZetovOrlvQqJ88EL_2UHqi2ywJsDJ-prcL0fqR8ak0lD/pub?output=csv";
 
-    <!-- ========================================== -->
-    <!-- APPLICATION LOGIC & DEFAULT VELIMANAM DATA -->
-    <!-- ========================================== -->
-    <script>
-        /**
-         * 1. CONFIGURATION:
-         * Paste your published Google Sheet CSV link here (File -> Share -> Publish to web -> CSV)
-         * And optionally set the Group Admin WhatsApp number to receive new listing requests.
-         */
-        let GOOGLE_SHEET_CSV_URL = localStorage.getItem('velimanam_sheet_csv') || "";
-        const ADMIN_WHATSAPP_NUMBER = ""; // Optional: e.g. "919876543210"
+    // Optional: Enter Admin's WhatsApp digits (e.g., "919876543210") to send new listings directly to Admin,
+    // or leave empty "" so villagers can pick the Velimanam group or admin contact in WhatsApp.
+    const ADMIN_WHATSAPP_NUMBER = "+919496190026";
 
-        /**
-         * 2. CATEGORY DEFINITIONS (Malayalam + English)
-         */
-        const CATEGORIES = [
-            { id: 'all',      icon: '🌴', ml: 'എല്ലാം',             en: 'All',              badgeClass: 'bg-slate-100 text-slate-800 border-slate-200' },
-            { id: 'auto',     icon: '🚕', ml: 'ഓട്ടോ / ടാക്സി',      en: 'Auto & Taxi',      badgeClass: 'bg-amber-50 text-amber-900 border-amber-200' },
-            { id: 'shops',    icon: '🛒', ml: 'കടകൾ',              en: 'Shops',            badgeClass: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
-            { id: 'medical',  icon: '🏥', ml: 'മെഡിക്കൽ / എമർജൻസി', en: 'Medical & Emergency', badgeClass: 'bg-rose-50 text-rose-900 border-rose-200' },
-            { id: 'services', icon: '🔧', ml: 'തൊഴിലാളികൾ',         en: 'Services & Workers', badgeClass: 'bg-sky-50 text-sky-900 border-sky-200' },
-            { id: 'public',   icon: '🩸', ml: 'പൊതുസേവനങ്ങൾ',      en: 'Public & Blood',   badgeClass: 'bg-purple-50 text-purple-900 border-purple-200' }
-        ];
+    // =========================================================================
+    // 2. FALLBACK DATA (Used if user is offline or Sheet is temporarily unreachable)
+    // =========================================================================
+    const FALLBACK_DATA = [
+      {
+        name: "രാജൻ ഓട്ടോ (Rajan Auto)",
+        category: "Auto / Taxi",
+        service: "24x7 Hospital & Local Trips",
+        location: "Velimanam Town",
+        phone: "+919876543210",
+        whatsapp: "919876543210",
+        hours: "24 Hours"
+      },
+      {
+        name: "അന്ന മെഡിക്കൽസ് (Anna Medicals)",
+        category: "Medical",
+        service: "Medicines & Surgical Items",
+        location: "Church Junction",
+        phone: "+919876543213",
+        whatsapp: "919876543213",
+        hours: "8:00 AM - 9:00 PM"
+      },
+      {
+        name: "കൈരളി സ്റ്റോഴ്സ് (Kairali Grocery)",
+        category: "Shops",
+        service: "Groceries, Vegetables & Stationery",
+        location: "Velimanam Town",
+        phone: "+919876543216",
+        whatsapp: "919876543216",
+        hours: "7:00 AM - 8:30 PM"
+      },
+      {
+        name: "സുരേഷ് ഇലക്ട്രീഷ്യൻ (Suresh)",
+        category: "Services",
+        service: "House Wiring, Inverter & Motor Repair",
+        location: "Payam Road",
+        phone: "+919876543219",
+        whatsapp: "919876543219",
+        hours: "7:00 AM - 7:00 PM"
+      }
+    ];
 
-        /**
-         * 3. REALISTIC VELIMANAM DEFAULT DIRECTORY DATA
-         * Works immediately out of the box and serves as a template.
-         */
-        const DEFAULT_DIRECTORY = [
-            // AUTO & TAXI
-            {
-                id: 1,
-                category: 'auto',
-                name: 'വെളിമാനം ടൗൺ ഓട്ടോ സ്റ്റാൻഡ് (Velimanam Auto Stand)',
-                details: 'എല്ലാ പ്രാദേശിക ഓട്ടങ്ങളും ആശുപത്രി സർവീസും • 24x7 Emergency Trips available',
-                location: 'Velimanam Town / വെളിമാനം ടൗൺ',
-                phone: '9447001122',
-                hours: '6:00 AM – 10:00 PM'
-            },
-            {
-                id: 2,
-                category: 'auto',
-                name: 'രാജൻ ഓട്ടോ (Rajan Auto)',
-                details: 'ആശുപത്രി ഓട്ടങ്ങൾ, ഇരിട്ടി / തലശ്ശേരി ട്രിപ്പുകൾ • Bajaj Compact Auto',
-                location: 'Church Junction / പള്ളി കവല',
-                phone: '9447112233',
-                hours: '24x7 (എമർജൻസി)'
-            },
-            {
-                id: 3,
-                category: 'auto',
-                name: 'ഷാജി ടാക്സി & ട്രാവൽസ് (Shaji Innova & Ertiga Taxi)',
-                details: 'കണ്ണൂർ എയർപോർട്ട് ഡ്രോപ്പ്, കുടുംബ യാത്രകൾ, ദീർഘദൂര സർവീസ് • AC Innova / Ertiga',
-                location: 'Velimanam / പായം റോഡ്',
-                phone: '9847223344',
-                hours: '24x7 Service'
-            },
-            {
-                id: 4,
-                category: 'auto',
-                name: 'മനോജ് ഗുഡ്സ് ഓട്ടോ (Manoj Pick-up & Goods Carrier)',
-                details: 'റബ്ബർ ഷീറ്റ്, തെങ്ങ്, നിർമ്മാണ സാമഗ്രികൾ കൊണ്ടുപോകാൻ • Mahindra Bolero Pickup',
-                location: 'Velimanam Town / വെളിമാനം',
-                phone: '9745334455',
-                hours: '6:00 AM – 8:00 PM'
-            },
+    let listings = [];
+    let activeCategory = "All";
+    let searchQuery = "";
 
-            // SHOPS
-            {
-                id: 5,
-                category: 'shops',
-                name: 'മലബാർ സൂപ്പർമാർക്കറ്റ് & പലചരക്ക് (Malabar Groceries)',
-                details: 'അരി, പലചരക്ക്, പച്ചക്കറി, നാടൻ ഉൽപ്പന്നങ്ങൾ • Home Delivery in Velimanam',
-                location: 'Velimanam Town / വെളിമാനം ടൗൺ',
-                phone: '9495445566',
-                hours: '7:00 AM – 9:00 PM'
-            },
-            {
-                id: 6,
-                category: 'shops',
-                name: 'സെന്റ് സെബാസ്റ്റ്യൻ ബേക്കറി & കൂൾബാർ (St. Sebastian Bakery)',
-                details: 'ചൂട് പലഹാരങ്ങൾ, കേക്കുകൾ, ചായ, ജ്യൂസ് • Birthday Cakes & Snacks Order',
-                location: 'Near Church / പള്ളി കവല',
-                phone: '9846556677',
-                hours: '6:30 AM – 9:30 PM'
-            },
-            {
-                id: 7,
-                category: 'shops',
-                name: 'കർഷക മിത്ര ഹാർഡ്‌വെയർ & റബ്ബർ സ്റ്റോർ (Hardware & Agri Shop)',
-                details: 'റബ്ബർ ടാപ്പിംഗ് ഉപകരണങ്ങൾ, ആസിഡ്, വളം, പൈപ്പുകൾ, പെയിന്റ്',
-                location: 'Payam Road / പായം റോഡ്',
-                phone: '9446667788',
-                hours: '8:00 AM – 7:30 PM'
-            },
-            {
-                id: 8,
-                category: 'shops',
-                name: 'തനിമ നാടൻ പാൽ & മുട്ട (Thanima Farm Fresh Milk & Eggs)',
-                details: 'ശുദ്ധമായ നാടൻ പശുവിൻ പാൽ, തൈര്, നാടൻ കോഴിമുട്ട, തേൻ',
-                location: 'Velimanam / വെളിമാനം ഈസ്റ്റ്',
-                phone: '9633778899',
-                hours: '5:30 AM – 7:00 PM'
-            },
+    // Proper RFC-4180 CSV Parser handling commas inside quotes
+    function parseCSV(csvText) {
+      const rows = [];
+      let currentRow = [];
+      let currentVal = "";
+      let insideQuotes = false;
 
-            // MEDICAL & EMERGENCY
-            {
-                id: 9,
-                category: 'medical',
-                name: 'കാരുണ്യ ആംബുലൻസ് സർവീസ് (24x7 Emergency Ambulance)',
-                details: 'ഓക്സിജൻ സൗകര്യമുള്ള ആംബുലൻസ് • Iritty, Kannur, Kozhikode Hospital Shifting',
-                location: 'Velimanam / ഇരിട്ടി മേഖല',
-                phone: '9447889900',
-                hours: '24x7 Emergency'
-            },
-            {
-                id: 10,
-                category: 'medical',
-                name: 'അന്ന മെഡിക്കൽസ് & ഫാർമസി (Anna Medicals)',
-                details: 'ഇംഗ്ലീഷ് മരുന്നുകൾ, ഷുഗർ/ബിപി പരിശോധന, സർജിക്കൽ ഉപകരണങ്ങൾ • WhatsApp Prescription',
-                location: 'Velimanam Town / വെളിമാനം ടൗൺ',
-                phone: '9496990011',
-                hours: '8:00 AM – 9:30 PM'
-            },
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
 
-            // SERVICES & WORKERS
-            {
-                id: 11,
-                category: 'services',
-                name: 'സുരേഷ് ഇലക്ട്രീഷ്യൻ & പ്ലംബർ (Suresh Electrical & Plumbing)',
-                details: 'ഹൗസ് വയറിംഗ്, മോട്ടോർ പമ്പ് റിപ്പയർ, ഇൻവെർട്ടർ, പൈപ്പ് ലീക്കേജ് പരിഹാരം',
-                location: 'Velimanam / വെളിമാനം',
-                phone: '9895123456',
-                hours: '7:00 AM – 7:00 PM'
-            },
-            {
-                id: 12,
-                category: 'services',
-                name: 'വിജയൻ തെങ്ങുകയറ്റം & കാടുവെട്ട് (Coconut Climber & Brush Cutter)',
-                details: 'യന്ത്രം ഉപയോഗിച്ചും അല്ലാതെയും തെങ്ങുകയറ്റം, പറമ്പിലെ കാടുവെട്ട്',
-                location: 'Velimanam / ആറളം റോഡ്',
-                phone: '9747234567',
-                hours: '6:30 AM – 5:30 PM'
-            },
-            {
-                id: 13,
-                category: 'services',
-                name: 'നിതിൻ മൊബൈൽ & ടിവി സർവീസ് (Mobile, Dish & CCTV Technician)',
-                details: 'മൊബൈൽ ഡിസ്പ്ലേ മാറ്റം, DTH റീചാർജ്, സിസിടിവി ക്യാമറ ഫിറ്റിംഗ്',
-                location: 'Velimanam Town / വെളിമാനം ടൗൺ',
-                phone: '9567345678',
-                hours: '9:00 AM – 8:00 PM'
-            },
-
-            // PUBLIC & BLOOD
-            {
-                id: 14,
-                category: 'public',
-                name: 'കെ.എസ്.ഇ.ബി ഓഫീസ് (KSEB Electricity Breakdown Support)',
-                details: 'വൈദ്യുതി തടസ്സങ്ങൾ, ലൈൻ പൊട്ടിവീഴൽ തുടങ്ങിയ അടിയന്തര പരാതികൾ അറിയിക്കാൻ',
-                location: 'KSEB Section / ഇരിട്ടി - പായം',
-                phone: '9496011500',
-                hours: '24x7 Helpline'
-            },
-            {
-                id: 15,
-                category: 'public',
-                name: 'വെളിമാനം ബ്ലഡ് ഡോണേഴ്സ് വിംഗ് (Velimanam Blood Donors Coordinator)',
-                details: 'അടിയന്തരമായി രക്തം ആവശ്യമുള്ളപ്പോൾ ബന്ധപ്പെടുക (All Blood Groups Registry)',
-                location: 'Velimanam Gramam Group',
-                phone: '9447556600',
-                hours: '24x7 Emergency'
-            },
-            {
-                id: 16,
-                category: 'public',
-                name: 'അക്ഷയ ഇ-സെന്റർ സേവനങ്ങൾ (Akshaya / Online Services Help)',
-                details: 'പെൻഷൻ മസ്റ്ററിംഗ്, വരുമാന സർട്ടിഫിക്കറ്റ്, റേഷൻ കാർഡ്, കരം അടയ്ക്കൽ',
-                location: 'Near Velimanam / പായം',
-                phone: '9446778800',
-                hours: '9:00 AM – 5:30 PM'
-            }
-        ];
-
-        // State Variables
-        let directoryItems = [];
-        let activeCategory = 'all';
-        let searchQuery = '';
-
-        /**
-         * 4. INITIALIZATION
-         */
-        window.addEventListener('DOMContentLoaded', () => {
-            loadLocalAndDefaultData();
-            if (GOOGLE_SHEET_CSV_URL) {
-                document.getElementById('customSheetUrlInput').value = GOOGLE_SHEET_CSV_URL;
-                fetchGoogleSheetCSV(GOOGLE_SHEET_CSV_URL);
-            }
-        });
-
-        function loadLocalAndDefaultData() {
-            const savedUserAdditions = JSON.parse(localStorage.getItem('velimanam_user_entries') || '[]');
-            directoryItems = [...savedUserAdditions, ...DEFAULT_DIRECTORY];
-            renderCategoryPills();
-            renderDirectoryCards();
+        if (char === '"') {
+          if (insideQuotes && nextChar === '"') {
+            currentVal += '"';
+            i++;
+          } else {
+            insideQuotes = !insideQuotes;
+          }
+        } else if (char === ',' && !insideQuotes) {
+          currentRow.push(currentVal.trim());
+          currentVal = "";
+        } else if ((char === '\n' || (char === '\r' && nextChar === '\n')) && !insideQuotes) {
+          if (char === '\r') i++;
+          currentRow.push(currentVal.trim());
+          if (currentRow.some(cell => cell !== "")) {
+            rows.push(currentRow);
+          }
+          currentRow = [];
+          currentVal = "";
+        } else {
+          currentVal += char;
         }
-
-        /**
-         * 5. RENDER CATEGORY PILLS WITH ITEM COUNTS
-         */
-        function renderCategoryPills() {
-            const container = document.getElementById('categoryPillsContainer');
-            container.innerHTML = CATEGORIES.map(cat => {
-                const count = cat.id === 'all'
-                    ? directoryItems.length
-                    : directoryItems.filter(item => item.category === cat.id).length;
-
-                const isActive = activeCategory === cat.id;
-                const activeClasses = isActive
-                    ? 'bg-emerald-800 text-white border-emerald-800 shadow-xs'
-                    : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700 border-slate-200';
-
-                return `
-                    <button 
-                        onclick="selectCategory('${cat.id}')"
-                        class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border text-xs sm:text-sm font-semibold transition ${activeClasses}"
-                    >
-                        <span>${cat.icon}</span>
-                        <span>${cat.ml}</span>
-                        <span class="text-[11px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-emerald-950/60 text-amber-300' : 'bg-white text-slate-600'}">
-                            ${count}
-                        </span>
-                    </button>
-                `;
-            }).join('');
+      }
+      if (currentVal || currentRow.length > 0) {
+        currentRow.push(currentVal.trim());
+        if (currentRow.some(cell => cell !== "")) {
+          rows.push(currentRow);
         }
+      }
 
-        /**
-         * 6. RENDER KANBAN-STYLE DIRECTORY CARDS
-         */
-        function renderDirectoryCards() {
-            const grid = document.getElementById('directoryGrid');
-            const emptyState = document.getElementById('emptyState');
-            const countText = document.getElementById('resultsCountText');
+      if (rows.length < 2) return [];
 
-            const q = searchQuery.trim().toLowerCase();
+      const headers = rows[0].map(h => h.toLowerCase().trim());
+      const nameIdx = headers.findIndex(h => h.includes("name"));
+      const catIdx = headers.findIndex(h => h.includes("cat"));
+      const srvIdx = headers.findIndex(h => h.includes("service") || h.includes("detail"));
+      const locIdx = headers.findIndex(h => h.includes("loc") || h.includes("place"));
+      const phIdx = headers.findIndex(h => h.includes("phone") || h.includes("mobile"));
+      const waIdx = headers.findIndex(h => h.includes("whatsapp") || h.includes("wa"));
+      const hrIdx = headers.findIndex(h => h.includes("hour") || h.includes("time"));
 
-            const filtered = directoryItems.filter(item => {
-                const matchesCat = activeCategory === 'all' || item.category === activeCategory;
-                if (!matchesCat) return false;
-                if (!q) return true;
+      return rows.slice(1).map(cols => {
+        const rawPhone = cols[phIdx !== -1 ? phIdx : 4] || "";
+        const rawWa = cols[waIdx !== -1 ? waIdx : 5] || rawPhone;
+        const cleanWa = rawWa.replace(/[^0-9]/g, "");
 
-                const catObj = CATEGORIES.find(c => c.id === item.category) || {};
-                const searchableText = `${item.name} ${item.details} ${item.location} ${item.phone} ${catObj.ml || ''} ${catObj.en || ''}`.toLowerCase();
-                return searchableText.includes(q);
-            });
+        return {
+          name: cols[nameIdx !== -1 ? nameIdx : 0] || "",
+          category: cols[catIdx !== -1 ? catIdx : 1] || "Services",
+          service: cols[srvIdx !== -1 ? srvIdx : 2] || "",
+          location: cols[locIdx !== -1 ? locIdx : 3] || "Velimanam",
+          phone: rawPhone,
+          whatsapp: cleanWa.length === 10 ? "91" + cleanWa : cleanWa,
+          hours: cols[hrIdx !== -1 ? hrIdx : 6] || ""
+        };
+      }).filter(item => item.name !== "");
+    }
 
-            countText.textContent = `${filtered.length} സേവനങ്ങൾ ലഭ്യമാണ് • Showing ${filtered.length} of ${directoryItems.length} listings`;
+    function getCategoryBadge(category) {
+      const catLower = (category || "").toLowerCase();
+      if (catLower.includes("auto") || catLower.includes("taxi")) {
+        return { label: "🚕 Auto / Taxi", cls: "badge-auto" };
+      }
+      if (catLower.includes("shop") || catLower.includes("store")) {
+        return { label: "🛒 Shops", cls: "badge-shops" };
+      }
+      if (catLower.includes("service")) {
+        return { label: "🔧 Services", cls: "badge-services" };
+      }
+      if (catLower.includes("med") || catLower.includes("hospital") || catLower.includes("clinic")) {
+        return { label: "🏥 Medical", cls: "badge-medical" };
+      }
+      if (catLower.includes("emerg") || catLower.includes("ambulance") || catLower.includes("kseb")) {
+        return { label: "🚨 Emergency", cls: "badge-emergency" };
+      }
+      return { label: category || "Other", cls: "badge-other" };
+    }
 
-            if (filtered.length === 0) {
-                grid.innerHTML = '';
-                emptyState.classList.remove('hidden');
-                return;
-            }
+    function escapeHTML(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
 
-            emptyState.classList.add('hidden');
+    function renderCards() {
+      const container = document.getElementById("cardsContainer");
+      const countEl = document.getElementById("resultCount");
+      const q = searchQuery.toLowerCase().trim();
 
-            grid.innerHTML = filtered.map(item => {
-                const cat = CATEGORIES.find(c => c.id === item.category) || CATEGORIES[0];
-                const cleanDigits = String(item.phone).replace(/\D/g, '');
-                const formattedTel = cleanDigits.length === 10 ? `+91${cleanDigits}` : `+${cleanDigits}`;
-                const waDigits = cleanDigits.length === 10 ? `91${cleanDigits}` : cleanDigits;
-                const waGreeting = encodeURIComponent(`നമസ്കാരം, വെളിമാനം ഗ്രാമം ഡയറക്ടറിയിൽ നിന്നാണ് (${item.name}).`);
+      const filtered = listings.filter(item => {
+        const matchesCat =
+          activeCategory === "All" ||
+          item.category.toLowerCase().includes(activeCategory.toLowerCase());
 
-                return `
-                    <article class="bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-500/60 shadow-xs hover:shadow-md transition-all p-4 flex flex-col justify-between">
-                        <div>
-                            <!-- Top Row: Category Badge & Hours -->
-                            <div class="flex items-center justify-between gap-2 mb-2.5">
-                                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold border ${cat.badgeClass}">
-                                    <span>${cat.icon}</span>
-                                    <span>${cat.ml}</span>
-                                </span>
-                                ${item.hours ? `
-                                    <span class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
-                                        🕒 ${escapeHtml(item.hours)}
-                                    </span>
-                                ` : ''}
-                            </div>
+        const matchesSearch =
+          !q ||
+          item.name.toLowerCase().includes(q) ||
+          item.service.toLowerCase().includes(q) ||
+          item.location.toLowerCase().includes(q) ||
+          item.category.toLowerCase().includes(q) ||
+          item.phone.toLowerCase().includes(q);
 
-                            <!-- Title -->
-                            <h2 class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-1.5">
-                                ${escapeHtml(item.name)}
-                            </h2>
+        return matchesCat && matchesSearch;
+      });
 
-                            <!-- Service / Vehicle / Shop Details -->
-                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
-                                ${escapeHtml(item.details)}
-                            </p>
-                        </div>
+      countEl.textContent = `${filtered.length} സേവനങ്ങൾ (Listings found)`;
 
-                        <div class="pt-3 border-t border-slate-100 mt-1 space-y-3">
-                            <!-- Location & Displayed Phone Number -->
-                            <div class="flex items-center justify-between text-xs text-slate-500 gap-2">
-                                <span class="inline-flex items-center gap-1 font-medium text-slate-700 truncate">
-                                    <span>📍</span>
-                                    <span class="truncate">${escapeHtml(item.location)}</span>
-                                </span>
-                                <span class="font-mono font-semibold text-slate-700 shrink-0">
-                                    ${escapeHtml(item.phone)}
-                                </span>
-                            </div>
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p style="font-size:1.05rem;font-weight:700;margin-bottom:4px;">വിവരങ്ങൾ ലഭ്യമല്ല (No matching listings)</p>
+            <p style="font-size:0.86rem;">Try clearing your search or choosing "All" categories above.</p>
+          </div>
+        `;
+        return;
+      }
 
-                            <!-- Elder-Friendly Big One-Tap Action Buttons -->
-                            <div class="grid grid-cols-2 gap-2.5">
-                                <a 
-                                    href="tel:${formattedTel}" 
-                                    class="inline-flex items-center justify-center gap-1.5 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold text-xs sm:text-sm py-2.5 px-3 rounded-xl shadow-xs transition"
-                                >
-                                    <span>📞</span>
-                                    <span>Call / വിളിക്കുക</span>
-                                </a>
+      container.innerHTML = filtered.map(item => {
+        const badge = getCategoryBadge(item.category);
+        const dialPhone = item.phone.replace(/[^0-9+]/g, "");
+        const waDigits = (item.whatsapp || dialPhone).replace(/[^0-9]/g, "");
+        const waText = encodeURIComponent(`നമസ്കാരം, വെളിമാനം ഗ്രാമം ഡയറക്ടറിയിൽ നിന്നാണ് (${item.name}).`);
 
-                                <a 
-                                    href="https://wa.me/${waDigits}?text=${waGreeting}" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    class="inline-flex items-center justify-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-900 border border-emerald-300 font-bold text-xs sm:text-sm py-2.5 px-3 rounded-xl transition"
-                                >
-                                    <span>💬</span>
-                                    <span>WhatsApp</span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                `;
-            }).join('');
+        return `
+          <article class="card">
+            <div class="card-header">
+              <h2 class="card-title">${escapeHTML(item.name)}</h2>
+              <span class="badge ${badge.cls}">${escapeHTML(badge.label)}</span>
+            </div>
+            <p class="card-service">${escapeHTML(item.service)}</p>
+            <div class="card-meta">
+              ${item.location ? `<span class="meta-item">📍 ${escapeHTML(item.location)}</span>` : ""}
+              ${item.hours ? `<span class="meta-item">🕒 ${escapeHTML(item.hours)}</span>` : ""}
+            </div>
+            <div class="card-actions">
+              <a href="tel:${escapeHTML(dialPhone)}" class="btn-action btn-call">
+                📞 Call / വിളിക്കുക
+              </a>
+              <a href="https://wa.me/${escapeHTML(waDigits)}?text=${waText}" target="_blank" rel="noopener" class="btn-action btn-wa">
+                💬 WhatsApp
+              </a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    async function loadDirectoryData() {
+      const syncStatus = document.getElementById("syncStatus");
+      syncStatus.innerHTML = `<span class="sync-dot"></span> Syncing...`;
+
+      try {
+        const cacheBusterUrl = SHEET_CSV_URL + (SHEET_CSV_URL.includes("?") ? "&" : "?") + "t=" + Date.now();
+        const response = await fetch(cacheBusterUrl);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const csvText = await response.text();
+        const parsed = parseCSV(csvText);
+
+        if (parsed.length > 0) {
+          listings = parsed;
+          localStorage.setItem("velimanam_cached_listings", JSON.stringify(parsed));
+          syncStatus.innerHTML = `<span class="sync-dot"></span> Live Google Sheet`;
+        } else {
+          throw new Error("Empty sheet");
         }
-
-        /**
-         * 7. FILTER & SEARCH HANDLERS
-         */
-        function selectCategory(catId) {
-            activeCategory = catId;
-            renderCategoryPills();
-            renderDirectoryCards();
+      } catch (err) {
+        const cached = localStorage.getItem("velimanam_cached_listings");
+        if (cached) {
+          listings = JSON.parse(cached);
+          syncStatus.innerHTML = `<span class="sync-dot" style="background:#d97706"></span> Offline Cache`;
+        } else {
+          listings = FALLBACK_DATA;
+          syncStatus.innerHTML = `<span class="sync-dot" style="background:#d97706"></span> Built-in Data`;
         }
+      }
+      renderCards();
+    }
 
-        function handleSearch(val) {
-            searchQuery = val;
-            const clearBtn = document.getElementById('clearSearchBtn');
-            if (val.trim().length > 0) {
-                clearBtn.classList.remove('hidden');
-                clearBtn.classList.add('flex');
-            } else {
-                clearBtn.classList.add('hidden');
-                clearBtn.classList.remove('flex');
-            }
-            renderDirectoryCards();
-        }
+    // Event Listeners
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      document.getElementById("clearSearchBtn").style.display = searchQuery ? "flex" : "none";
+      renderCards();
+    });
 
-        function clearSearch() {
-            const input = document.getElementById('searchInput');
-            input.value = '';
-            handleSearch('');
-            input.focus();
-        }
+    document.getElementById("clearSearchBtn").addEventListener("click", () => {
+      const input = document.getElementById("searchInput");
+      input.value = "";
+      searchQuery = "";
+      document.getElementById("clearSearchBtn").style.display = "none";
+      renderCards();
+    });
 
-        function resetFilters() {
-            activeCategory = 'all';
-            clearSearch();
-            renderCategoryPills();
-            renderDirectoryCards();
-        }
+    document.getElementById("categoryPills").addEventListener("click", (e) => {
+      const btn = e.target.closest(".pill");
+      if (!btn) return;
+      document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      activeCategory = btn.getAttribute("data-cat");
+      renderCards();
+    });
 
-        /**
-         * 8. ADD NEW LISTING (LOCAL SAVE + WHATSAPP SHARE FOR GROUP ADMIN)
-         */
-        function openAddModal() {
-            const modal = document.getElementById('addModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
+    document.getElementById("refreshBtn").addEventListener("click", () => {
+      loadDirectoryData();
+    });
 
-        function closeAddModal() {
-            const modal = document.getElementById('addModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+    // Modal handling
+    const addModal = document.getElementById("addModal");
+    document.getElementById("openAddModalBtn").addEventListener("click", () => {
+      addModal.classList.add("open");
+    });
+    document.getElementById("closeAddModalBtn").addEventListener("click", () => {
+      addModal.classList.remove("open");
+    });
+    addModal.addEventListener("click", (e) => {
+      if (e.target === addModal) addModal.classList.remove("open");
+    });
 
-        function handleAddListingSubmit(e) {
-            e.preventDefault();
-            const newItem = {
-                id: Date.now(),
-                category: document.getElementById('formCategory').value,
-                name: document.getElementById('formName').value.trim(),
-                details: document.getElementById('formDetails').value.trim(),
-                location: document.getElementById('formLocation').value.trim(),
-                hours: document.getElementById('formHours').value.trim() || 'ലഭ്യമാണ്',
-                phone: document.getElementById('formPhone').value.trim()
-            };
+    document.getElementById("addListingForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("fName").value.trim();
+      const category = document.getElementById("fCategory").value;
+      const service = document.getElementById("fService").value.trim();
+      const location = document.getElementById("fLocation").value.trim();
+      const phone = document.getElementById("fPhone").value.trim();
+      const hours = document.getElementById("fHours").value.trim();
+      const waDigits = phone.replace(/[^0-9]/g, "");
 
-            // Save to browser localStorage so user sees it right away
-            const existing = JSON.parse(localStorage.getItem('velimanam_user_entries') || '[]');
-            existing.unshift(newItem);
-            localStorage.setItem('velimanam_user_entries', JSON.stringify(existing));
+      const msg =
+        `🌴 *വെളിമാനം ഗ്രാമം ഡയറക്ടറി - പുതിയ വിവരങ്ങൾ*\n\n` +
+        `*Name:* ${name}\n` +
+        `*Category:* ${category}\n` +
+        `*Service:* ${service}\n` +
+        `*Location:* ${location}\n` +
+        `*Phone:* ${phone}\n` +
+        `*Hours:* ${hours}\n\n` +
+        `*Sheet Row (Admin Copy-Paste):*\n` +
+        `${name} | ${category} | ${service} | ${location} | ${phone} | ${waDigits} | ${hours}`;
 
-            loadLocalAndDefaultData();
-            closeAddModal();
-            e.target.reset();
-            showToast('✅ വിവരങ്ങൾ ഡയറക്ടറിയിൽ ചേർത്തു!');
+      const waUrl = ADMIN_WHATSAPP_NUMBER
+        ? `https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
+        : `https://wa.me/?text=${encodeURIComponent(msg)}`;
 
-            // Prepare formatted WhatsApp message for the Velimanam group / admin
-            const catObj = CATEGORIES.find(c => c.id === newItem.category) || CATEGORIES[0];
-            const waText = encodeURIComponent(
-                `🌴 *വെളിമാനം ഗ്രാമം ഡയറക്ടറി - പുതിയ വിവരങ്ങൾ*\n\n` +
-                `• *വിഭാഗം:* ${catObj.icon} ${catObj.ml}\n` +
-                `• *പേര്:* ${newItem.name}\n` +
-                `• *സേവനം:* ${newItem.details}\n` +
-                `• *സ്ഥലം:* ${newItem.location}\n` +
-                `• *സമയം:* ${newItem.hours}\n` +
-                `• *ഫോൺ:* ${newItem.phone}`
-            );
+      window.open(waUrl, "_blank");
+      addModal.classList.remove("open");
+      e.target.reset();
+    });
 
-            const targetUrl = ADMIN_WHATSAPP_NUMBER
-                ? `https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${waText}`
-                : `https://wa.me/?text=${waText}`;
-
-            window.open(targetUrl, '_blank');
-        }
-
-        /**
-         * 9. GOOGLE SHEETS LIVE CSV FETCH & PARSER
-         */
-        async function fetchGoogleSheetCSV(csvUrl) {
-            const statusLabel = document.getElementById('syncStatusLabel');
-            statusLabel.textContent = 'Syncing Google Sheet...';
-            try {
-                const response = await fetch(csvUrl);
-                if (!response.ok) throw new Error('Network error');
-                const csvText = await response.text();
-                const parsedRows = parseCSV(csvText);
-
-                if (parsedRows.length > 0) {
-                    const savedUserAdditions = JSON.parse(localStorage.getItem('velimanam_user_entries') || '[]');
-                    directoryItems = [...savedUserAdditions, ...parsedRows];
-                    renderCategoryPills();
-                    renderDirectoryCards();
-                    statusLabel.textContent = 'Google Sheet Live Synced ✓';
-                }
-            } catch (err) {
-                statusLabel.textContent = 'Offline / Default Mode';
-            }
-        }
-
-        function parseCSV(csvText) {
-            const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== '');
-            if (lines.length < 2) return [];
-
-            const results = [];
-            for (let i = 1; i < lines.length; i++) {
-                const cols = splitCsvLine(lines[i]);
-                if (cols.length >= 5) {
-                    results.push({
-                        id: 'sheet-' + i,
-                        category: normalizeCategory(cols[0]),
-                        name: cols[1] || '',
-                        details: cols[2] || '',
-                        location: cols[3] || 'Velimanam',
-                        phone: cols[4] || '',
-                        hours: cols[5] || ''
-                    });
-                }
-            }
-            return results;
-        }
-
-        function splitCsvLine(line) {
-            const result = [];
-            let current = '';
-            let inQuotes = false;
-            for (let i = 0; i < line.length; i++) {
-                const char = line[i];
-                if (char === '"') {
-                    inQuotes = !inQuotes;
-                } else if (char === ',' && !inQuotes) {
-                    result.push(current.trim());
-                    current = '';
-                } else {
-                    current += char;
-                }
-            }
-            result.push(current.trim());
-            return result;
-        }
-
-        function normalizeCategory(raw) {
-            const v = (raw || '').toLowerCase();
-            if (v.includes('auto') || v.includes('taxi') || v.includes('ഓട്ടോ')) return 'auto';
-            if (v.includes('shop') || v.includes('കട')) return 'shops';
-            if (v.includes('med') || v.includes('hosp') || v.includes('ആംബുലൻസ്')) return 'medical';
-            if (v.includes('serv') || v.includes('work') || v.includes('തൊഴിൽ')) return 'services';
-            if (v.includes('pub') || v.includes('blood') || v.includes('പൊതു')) return 'public';
-            return 'shops';
-        }
-
-        /**
-         * 10. ADMIN MODAL & CSV TEMPLATE DOWNLOAD
-         */
-        function openAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function saveCustomSheetUrl() {
-            const url = document.getElementById('customSheetUrlInput').value.trim();
-            localStorage.setItem('velimanam_sheet_csv', url);
-            GOOGLE_SHEET_CSV_URL = url;
-            if (url) {
-                fetchGoogleSheetCSV(url);
-                showToast('Google Sheet URL Saved & Synced!');
-            } else {
-                loadLocalAndDefaultData();
-                showToast('Reverted to Default Velimanam Data');
-            }
-            closeAdminModal();
-        }
-
-        function downloadCsvTemplate() {
-            const headers = ['Category,Name,Details,Location,Phone,Hours'];
-            const rows = DEFAULT_DIRECTORY.map(item =>
-                `"${item.category}","${item.name.replace(/"/g, '""')}","${item.details.replace(/"/g, '""')}","${item.location.replace(/"/g, '""')}","${item.phone}","${item.hours}"`
-            );
-            const csvContent = '\uFEFF' + headers.concat(rows).join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'velimanam_gramam_directory_template.csv';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
-        /**
-         * 11. SHARE DIRECTORY ON WHATSAPP
-         */
-        function shareDirectoryOnWhatsApp() {
-            const pageUrl = window.location.href;
-            const shareMsg = encodeURIComponent(
-                `🌴 *വെളിമാനം ഗ്രാമം - പ്രാദേശിക ഡയറക്ടറി*\n` +
-                `നമ്മുടെ നാട്ടിലെ ഓട്ടോ/ടാക്സി, കടകൾ, ആംബുലൻസ്, തൊഴിലാളികൾ എന്നിവരുടെ ഫോൺ നമ്പറുകൾ ഒറ്റ ക്ലിക്കിൽ വിളിക്കാൻ:\n👉 ${pageUrl}`
-            );
-            window.open(`https://wa.me/?text=${shareMsg}`, '_blank');
-        }
-
-        /**
-         * 12. UTILITIES
-         */
-        function escapeHtml(str) {
-            return String(str || '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMessage').textContent = msg;
-            toast.classList.remove('hidden');
-            toast.classList.add('flex');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-                toast.classList.remove('flex');
-            }, 3500);
-        }
-    </script>
+    // Initial Load
+    loadDirectoryData();
+  </script>
 </body>
 </html>
