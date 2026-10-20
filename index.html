@@ -565,7 +565,7 @@
             <option value="Medical">👩‍⚕️ Medical / ASHA Worker (ആശാ വർക്കർ, മെഡിക്കൽ, ക്ലിനിക്)</option>
             <option value="Representatives">🏛️ Representatives / Politicians (ജനപ്രതിനിധികൾ / വാർഡ് മെമ്പർ / രാഷ്ട്രീയ നേതാക്കൾ)</option>
             <option value="Media">📰 Media Reporters (മാധ്യമ പ്രവർത്തകർ / പത്രപ്രവർത്തകർ)</option>
-            <option value="Religious">🕌 Religious Institutions (ആരാധനാലയങ്ങൾ - പള്ളി, ക്ഷേത്രം, മസ്ജിദ്)</option>
+            <option value="Religious">⛪🛕🕌 Religious Institutions (ആരാധനാലയങ്ങൾ - പള്ളി, ക്ഷേത്രം, മസ്ജിദ്)</option>
             <option value="Services">🔧 Services (തൊഴിലാളികൾ - ഇലക്ട്രീഷ്യൻ, പ്ലംബർ മുതലായവ)</option>
           </select>
         </div>
@@ -793,7 +793,7 @@
         catLower.includes("ക്ഷേത്രം") ||
         catLower.includes("ആരാധന")
       ) {
-        return { group: "Religious", label: "🕌 Religious", cls: "badge-religious" };
+        return { group: "Religious", label: "⛪🛕🕌 Religious", cls: "badge-religious" };
       }
       if (catLower.includes("service") || catLower.includes("സേവന")) {
         return { group: "Services", label: "🔧 Services", cls: "badge-services" };
