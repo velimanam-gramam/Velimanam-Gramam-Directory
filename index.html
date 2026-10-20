@@ -34,7 +34,7 @@
       font-family: 'Manjari', 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text-main);
-      padding-bottom: 90px;
+      padding-bottom: 95px;
       line-height: 1.45;
     }
 
@@ -126,7 +126,7 @@
       padding: 13px 40px 13px 42px;
       border-radius: 12px;
       border: none;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-family: inherit;
       background: #ffffff;
       color: var(--text-main);
@@ -288,11 +288,15 @@
       flex-shrink: 0;
     }
 
+    /* Category Badges */
     .badge-auto { background: #fef3c7; color: #92400e; }
     .badge-shops { background: #dbeafe; color: #1e40af; }
     .badge-services { background: #e0e7ff; color: #3730a3; }
     .badge-medical { background: #d1fae5; color: #065f46; }
     .badge-emergency { background: #fee2e2; color: #991b1b; }
+    .badge-reps { background: #f3e8ff; color: #6b21a8; }
+    .badge-media { background: #cffafe; color: #155e75; }
+    .badge-religious { background: #ffedd5; color: #9a3412; }
     .badge-other { background: #f3f4f6; color: #374151; }
 
     .card-service {
@@ -353,7 +357,7 @@
       border: 1px solid #bbf7d0;
     }
 
-    /* Empty & Loading States */
+    /* Empty State */
     .empty-state {
       text-align: center;
       padding: 44px 20px;
@@ -502,7 +506,7 @@
         type="search"
         id="searchInput"
         class="search-input"
-        placeholder="തിരയുക / Search auto, shops, name, place..."
+        placeholder="തിരയുക / Search auto, shops, police, ASHA, church..."
         autocomplete="off"
       />
       <button class="clear-search" id="clearSearchBtn">✕</button>
@@ -515,9 +519,12 @@
       <button class="pill active" data-cat="All">📋 എല്ലാം (All)</button>
       <button class="pill" data-cat="Auto / Taxi">🚕 ഓട്ടോ / ടാക്സി</button>
       <button class="pill" data-cat="Shops">🛒 കടകൾ (Shops)</button>
+      <button class="pill" data-cat="Emergency">🚓 പോലീസ് / ഫയർ / എമർജൻസി</button>
+      <button class="pill" data-cat="Medical">👩‍⚕️ ആശാ വർക്കർ / മെഡിക്കൽ</button>
+      <button class="pill" data-cat="Representatives">🏛️ ജനപ്രതിനിധികൾ (Politicians)</button>
+      <button class="pill" data-cat="Media">📰 മാധ്യമ പ്രവർത്തകർ (Media)</button>
+      <button class="pill" data-cat="Religious">🕌 ആരാധനാലയങ്ങൾ (Religious)</button>
       <button class="pill" data-cat="Services">🔧 സേവനങ്ങൾ (Services)</button>
-      <button class="pill" data-cat="Medical">🏥 മെഡിക്കൽ</button>
-      <button class="pill" data-cat="Emergency">🚨 എമർജൻസി</button>
     </div>
   </div>
 
@@ -546,34 +553,37 @@
       </div>
       <form id="addListingForm">
         <div class="form-group">
-          <label>പേര് / സ്ഥാപനത്തിന്റെ പേര് (Name / Shop Name) *</label>
-          <input type="text" id="fName" class="form-control" placeholder="e.g., രാജൻ ഓട്ടോ (Rajan Auto)" required />
+          <label>പേര് / സ്ഥാപനത്തിന്റെ പേര് (Name / Institution Name) *</label>
+          <input type="text" id="fName" class="form-control" placeholder="e.g., രാജൻ ഓട്ടോ / ആശാ വർക്കർ / പോലീസ് സ്റ്റേഷൻ" required />
         </div>
         <div class="form-group">
           <label>വിഭാഗം (Category) *</label>
           <select id="fCategory" class="form-control" required>
-            <option value="Auto / Taxi">🚕 Auto / Taxi (ഓട്ടോ / ടാക്സി)</option>
-            <option value="Shops">🛒 Shops (കടകൾ)</option>
-            <option value="Services">🔧 Services (സേവനങ്ങൾ)</option>
-            <option value="Medical">🏥 Medical (മെഡിക്കൽ)</option>
-            <option value="Emergency">🚨 Emergency (എമർജൻസി)</option>
+            <option value="Shops">🛒 Shops (കടകൾ / വ്യാപാര സ്ഥാപനങ്ങൾ)</option>
+            <option value="Auto / Taxi">🚕 Auto / Taxi (ഓട്ടോ / ടാക്സി / വാഹനങ്ങൾ)</option>
+            <option value="Emergency">🚓 Police / Fire / Emergency (പോലീസ്, ഫയർഫോഴ്സ്, KSEB, ആംബുലൻസ്)</option>
+            <option value="Medical">👩‍⚕️ Medical / ASHA Worker (ആശാ വർക്കർ, മെഡിക്കൽ, ക്ലിനിക്)</option>
+            <option value="Representatives">🏛️ Representatives / Politicians (ജനപ്രതിനിധികൾ / വാർഡ് മെമ്പർ / രാഷ്ട്രീയ നേതാക്കൾ)</option>
+            <option value="Media">📰 Media Reporters (മാധ്യമ പ്രവർത്തകർ / പത്രപ്രവർത്തകർ)</option>
+            <option value="Religious">🕌 Religious Institutions (ആരാധനാലയങ്ങൾ - പള്ളി, ക്ഷേത്രം, മസ്ജിദ്)</option>
+            <option value="Services">🔧 Services (തൊഴിലാളികൾ - ഇലക്ട്രീഷ്യൻ, പ്ലംബർ മുതലായവ)</option>
           </select>
         </div>
         <div class="form-group">
-          <label>സേവനങ്ങൾ (Service Details) *</label>
-          <input type="text" id="fService" class="form-control" placeholder="e.g., 24x7 Hospital & Local Trips" required />
+          <label>സേവനങ്ങൾ / പദവി (Service Details / Role) *</label>
+          <input type="text" id="fService" class="form-control" placeholder="e.g., Ward 5 ASHA Worker / Grocery Shop / Reporter" required />
         </div>
         <div class="form-group">
-          <label>സ്ഥലം (Location / Junction) *</label>
-          <input type="text" id="fLocation" class="form-control" placeholder="e.g., Velimanam Town / Church Jn" required />
+          <label>സ്ഥലം / വാർഡ് (Location / Ward) *</label>
+          <input type="text" id="fLocation" class="form-control" placeholder="e.g., Velimanam Town / Iritty / Ward 4" required />
         </div>
         <div class="form-group">
           <label>ഫോൺ നമ്പർ (Phone Number) *</label>
           <input type="tel" id="fPhone" class="form-control" placeholder="+919876543210" required />
         </div>
         <div class="form-group">
-          <label>സമയം (Working Hours)</label>
-          <input type="text" id="fHours" class="form-control" placeholder="e.g., 7:00 AM - 8:30 PM or 24 Hours" value="8:00 AM - 8:00 PM" />
+          <label>ലഭ്യമായ സമയം (Working Hours)</label>
+          <input type="text" id="fHours" class="form-control" placeholder="e.g., 8:00 AM - 8:00 PM or 24 Hours" value="24 Hours" />
         </div>
         <button type="submit" class="btn-submit">💬 Send Details to Admin on WhatsApp</button>
       </form>
@@ -582,18 +592,72 @@
 
   <script>
     // =========================================================================
-    // 1. LIVE GOOGLE SHEET CSV URL (Hardcoded to your published Velimanam Sheet)
+    // 1. LIVE GOOGLE SHEET CSV URL
     // =========================================================================
     const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrIWHBhr5j0wsA85b63U-9y2cGkU5lzp9yZetovOrlvQqJ88EL_2UHqi2ywJsDJ-prcL0fqR8ak0lD/pub?output=csv";
 
     // Optional: Enter Admin's WhatsApp digits (e.g., "919876543210") to send new listings directly to Admin,
     // or leave empty "" so villagers can pick the Velimanam group or admin contact in WhatsApp.
-    const ADMIN_WHATSAPP_NUMBER = "+919496190026";
+    const ADMIN_WHATSAPP_NUMBER = "";
 
     // =========================================================================
-    // 2. FALLBACK DATA (Used if user is offline or Sheet is temporarily unreachable)
+    // 2. FALLBACK DATA (Includes all new categories if offline)
     // =========================================================================
     const FALLBACK_DATA = [
+      {
+        name: "ആറളം പോലീസ് സ്റ്റേഷൻ (Aralam Police Station)",
+        category: "Emergency",
+        service: "Police Station & Law Enforcement",
+        location: "Aralam / Iritty",
+        phone: "04902454000",
+        whatsapp: "919497987200",
+        hours: "24 Hours"
+      },
+      {
+        name: "ഇരിട്ടി ഫയർ & റെസ്ക്യൂ (Iritty Fire Station)",
+        category: "Emergency",
+        service: "Fire & Rescue Emergency Services",
+        location: "Iritty",
+        phone: "04902494101",
+        whatsapp: "914902494101",
+        hours: "24 Hours"
+      },
+      {
+        name: "ആശാ വർക്കർ - വെളിമാനം (ASHA Worker)",
+        category: "Medical",
+        service: "Community Health & Maternal Care Support",
+        location: "Velimanam Ward",
+        phone: "+919876543230",
+        whatsapp: "919876543230",
+        hours: "8:00 AM - 6:00 PM"
+      },
+      {
+        name: "വാർഡ് മെമ്പർ - വെളിമാനം (Ward Member)",
+        category: "Representatives",
+        service: "Panchayat Ward Representative",
+        location: "Velimanam",
+        phone: "+919876543231",
+        whatsapp: "919876543231",
+        hours: "8:00 AM - 8:00 PM"
+      },
+      {
+        name: "പ്രാദേശിക പത്രപ്രവർത്തകൻ (Local Media Reporter)",
+        category: "Media",
+        service: "Local News & Village Announcements",
+        location: "Velimanam / Iritty",
+        phone: "+919876543232",
+        whatsapp: "919876543232",
+        hours: "24 Hours"
+      },
+      {
+        name: "സെന്റ് സെബാസ്റ്റ്യൻസ് പള്ളി (St. Sebastian's Church)",
+        category: "Religious",
+        service: "Parish Office & Church Announcements",
+        location: "Velimanam",
+        phone: "+919876543233",
+        whatsapp: "919876543233",
+        hours: "8:00 AM - 6:00 PM"
+      },
       {
         name: "രാജൻ ഓട്ടോ (Rajan Auto)",
         category: "Auto / Taxi",
@@ -602,15 +666,6 @@
         phone: "+919876543210",
         whatsapp: "919876543210",
         hours: "24 Hours"
-      },
-      {
-        name: "അന്ന മെഡിക്കൽസ് (Anna Medicals)",
-        category: "Medical",
-        service: "Medicines & Surgical Items",
-        location: "Church Junction",
-        phone: "+919876543213",
-        whatsapp: "919876543213",
-        hours: "8:00 AM - 9:00 PM"
       },
       {
         name: "കൈരളി സ്റ്റോഴ്സ് (Kairali Grocery)",
@@ -681,8 +736,8 @@
       const headers = rows[0].map(h => h.toLowerCase().trim());
       const nameIdx = headers.findIndex(h => h.includes("name"));
       const catIdx = headers.findIndex(h => h.includes("cat"));
-      const srvIdx = headers.findIndex(h => h.includes("service") || h.includes("detail"));
-      const locIdx = headers.findIndex(h => h.includes("loc") || h.includes("place"));
+      const srvIdx = headers.findIndex(h => h.includes("service") || h.includes("detail") || h.includes("role"));
+      const locIdx = headers.findIndex(h => h.includes("loc") || h.includes("place") || h.includes("ward"));
       const phIdx = headers.findIndex(h => h.includes("phone") || h.includes("mobile"));
       const waIdx = headers.findIndex(h => h.includes("whatsapp") || h.includes("wa"));
       const hrIdx = headers.findIndex(h => h.includes("hour") || h.includes("time"));
@@ -704,24 +759,73 @@
       }).filter(item => item.name !== "");
     }
 
-    function getCategoryBadge(category) {
+    // Maps any category text to its normalized group & visual badge
+    function getCategoryMeta(category, serviceText = "") {
+      const combined = ((category || "") + " " + (serviceText || "")).toLowerCase();
       const catLower = (category || "").toLowerCase();
-      if (catLower.includes("auto") || catLower.includes("taxi")) {
-        return { label: "🚕 Auto / Taxi", cls: "badge-auto" };
+
+      if (catLower.includes("auto") || catLower.includes("taxi") || catLower.includes("jeep") || catLower.includes("വാഹന")) {
+        return { group: "Auto / Taxi", label: "🚕 Auto / Taxi", cls: "badge-auto" };
       }
-      if (catLower.includes("shop") || catLower.includes("store")) {
-        return { label: "🛒 Shops", cls: "badge-shops" };
+      if (catLower.includes("shop") || catLower.includes("store") || catLower.includes("bakery") || catLower.includes("കട")) {
+        return { group: "Shops", label: "🛒 Shops", cls: "badge-shops" };
       }
-      if (catLower.includes("service")) {
-        return { label: "🔧 Services", cls: "badge-services" };
+      if (
+        catLower.includes("emerg") ||
+        catLower.includes("police") ||
+        catLower.includes("fire") ||
+        catLower.includes("ambulance") ||
+        catLower.includes("kseb") ||
+        catLower.includes("forest")
+      ) {
+        return { group: "Emergency", label: "🚓 Police / Fire / Emergency", cls: "badge-emergency" };
       }
-      if (catLower.includes("med") || catLower.includes("hospital") || catLower.includes("clinic")) {
-        return { label: "🏥 Medical", cls: "badge-medical" };
+      if (
+        catLower.includes("med") ||
+        catLower.includes("asha") ||
+        catLower.includes("health") ||
+        catLower.includes("hospital") ||
+        catLower.includes("clinic") ||
+        combined.includes("ആശാ")
+      ) {
+        return { group: "Medical", label: "👩‍⚕️ Medical / ASHA", cls: "badge-medical" };
       }
-      if (catLower.includes("emerg") || catLower.includes("ambulance") || catLower.includes("kseb")) {
-        return { label: "🚨 Emergency", cls: "badge-emergency" };
+      if (
+        catLower.includes("rep") ||
+        catLower.includes("politic") ||
+        catLower.includes("member") ||
+        catLower.includes("panchayat") ||
+        catLower.includes("leader") ||
+        catLower.includes("ജനപ്രതിനിധി")
+      ) {
+        return { group: "Representatives", label: "🏛️ Public Rep", cls: "badge-reps" };
       }
-      return { label: category || "Other", cls: "badge-other" };
+      if (
+        catLower.includes("media") ||
+        catLower.includes("report") ||
+        catLower.includes("news") ||
+        catLower.includes("press") ||
+        catLower.includes("journal") ||
+        catLower.includes("മാധ്യമ")
+      ) {
+        return { group: "Media", label: "📰 Media / Reporter", cls: "badge-media" };
+      }
+      if (
+        catLower.includes("relig") ||
+        catLower.includes("church") ||
+        catLower.includes("temple") ||
+        catLower.includes("mosque") ||
+        catLower.includes("masjid") ||
+        catLower.includes("പള്ളി") ||
+        catLower.includes("ക്ഷേത്രം") ||
+        catLower.includes("ആരാധന")
+      ) {
+        return { group: "Religious", label: "🕌 Religious", cls: "badge-religious" };
+      }
+      if (catLower.includes("service") || catLower.includes("സേവന")) {
+        return { group: "Services", label: "🔧 Services", cls: "badge-services" };
+      }
+      return { group: category || "Other", label: category || "Other", cls: "badge-other" };
     }
 
     function escapeHTML(str) {
@@ -738,8 +842,11 @@
       const q = searchQuery.toLowerCase().trim();
 
       const filtered = listings.filter(item => {
+        const meta = getCategoryMeta(item.category, item.service);
+
         const matchesCat =
           activeCategory === "All" ||
+          meta.group.toLowerCase() === activeCategory.toLowerCase() ||
           item.category.toLowerCase().includes(activeCategory.toLowerCase());
 
         const matchesSearch =
@@ -748,12 +855,13 @@
           item.service.toLowerCase().includes(q) ||
           item.location.toLowerCase().includes(q) ||
           item.category.toLowerCase().includes(q) ||
+          meta.label.toLowerCase().includes(q) ||
           item.phone.toLowerCase().includes(q);
 
         return matchesCat && matchesSearch;
       });
 
-      countEl.textContent = `${filtered.length} സേവനങ്ങൾ (Listings found)`;
+      countEl.textContent = `${filtered.length} വിവരങ്ങൾ (Listings found)`;
 
       if (filtered.length === 0) {
         container.innerHTML = `
@@ -766,7 +874,7 @@
       }
 
       container.innerHTML = filtered.map(item => {
-        const badge = getCategoryBadge(item.category);
+        const badge = getCategoryMeta(item.category, item.service);
         const dialPhone = item.phone.replace(/[^0-9+]/g, "");
         const waDigits = (item.whatsapp || dialPhone).replace(/[^0-9]/g, "");
         const waText = encodeURIComponent(`നമസ്കാരം, വെളിമാനം ഗ്രാമം ഡയറക്ടറിയിൽ നിന്നാണ് (${item.name}).`);
@@ -880,7 +988,7 @@
         `🌴 *വെളിമാനം ഗ്രാമം ഡയറക്ടറി - പുതിയ വിവരങ്ങൾ*\n\n` +
         `*Name:* ${name}\n` +
         `*Category:* ${category}\n` +
-        `*Service:* ${service}\n` +
+        `*Service/Role:* ${service}\n` +
         `*Location:* ${location}\n` +
         `*Phone:* ${phone}\n` +
         `*Hours:* ${hours}\n\n` +
