@@ -292,10 +292,10 @@
     .badge-auto { background: #fef3c7; color: #92400e; }
     .badge-shops { background: #dbeafe; color: #1e40af; }
     .badge-services { background: #e0e7ff; color: #3730a3; }
-    .badge-medical { background: #d1fae5; color: #065f46; }
+    .badge-ical { background: #d1fae5; color: #065f46; }
     .badge-emergency { background: #fee2e2; color: #991b1b; }
     .badge-reps { background: #f3e8ff; color: #6b21a8; }
-    .badge-media { background: #cffafe; color: #155e75; }
+    .badge-ia { background: #cffafe; color: #155e75; }
     .badge-religious { background: #ffedd5; color: #9a3412; }
     .badge-other { background: #f3f4f6; color: #374151; }
 
@@ -414,7 +414,7 @@
       overflow-y: auto;
     }
 
-    @media (min-width: 600px) {
+    @ia (min-width: 600px) {
       .modal-backdrop {
         align-items: center;
         padding: 16px;
@@ -520,9 +520,9 @@
       <button class="pill" data-cat="Auto / Taxi">🚕 ഓട്ടോ / ടാക്സി</button>
       <button class="pill" data-cat="Shops">🛒 കടകൾ (Shops)</button>
       <button class="pill" data-cat="Emergency">🚓 പോലീസ് / ഫയർ / എമർജൻസി</button>
-      <button class="pill" data-cat="Medical">👩‍⚕️ ആശാ വർക്കർ / മെഡിക്കൽ</button>
+      <button class="pill" data-cat="ical">👩‍⚕️ ആശാ വർക്കർ / മെഡിക്കൽ</button>
       <button class="pill" data-cat="Representatives">🏛️ ജനപ്രതിനിധികൾ (Politicians)</button>
-      <button class="pill" data-cat="Media">📰 മാധ്യമ പ്രവർത്തകർ (Media)</button>
+      <button class="pill" data-cat="ia">📰 മാധ്യമ പ്രവർത്തകർ (ia)</button>
       <button class="pill" data-cat="Religious">⛪🛕🕌 ആരാധനാലയങ്ങൾ (Religious)</button>
       <button class="pill" data-cat="Services">🔧 സേവനങ്ങൾ (Services)</button>
     </div>
@@ -562,9 +562,9 @@
             <option value="Shops">🛒 Shops (കടകൾ / വ്യാപാര സ്ഥാപനങ്ങൾ)</option>
             <option value="Auto / Taxi">🚕 Auto / Taxi (ഓട്ടോ / ടാക്സി / വാഹനങ്ങൾ)</option>
             <option value="Emergency">🚓 Police / Fire / Emergency (പോലീസ്, ഫയർഫോഴ്സ്, KSEB, ആംബുലൻസ്)</option>
-            <option value="Medical">👩‍⚕️ Medical / ASHA Worker (ആശാ വർക്കർ, മെഡിക്കൽ, ക്ലിനിക്)</option>
+            <option value="ical">👩‍⚕️ ical / ASHA Worker (ആശാ വർക്കർ, മെഡിക്കൽ, ക്ലിനിക്)</option>
             <option value="Representatives">🏛️ Representatives / Politicians (ജനപ്രതിനിധികൾ / വാർഡ് മെമ്പർ / രാഷ്ട്രീയ നേതാക്കൾ)</option>
-            <option value="Media">📰 Media Reporters (മാധ്യമ പ്രവർത്തകർ / പത്രപ്രവർത്തകർ)</option>
+            <option value="ia">📰 ia Reporters (മാധ്യമ പ്രവർത്തകർ / പത്രപ്രവർത്തകർ)</option>
             <option value="Religious">⛪🛕🕌 Religious Institutions (ആരാധനാലയങ്ങൾ - പള്ളി, ക്ഷേത്രം, മസ്ജിദ്)</option>
             <option value="Services">🔧 Services (തൊഴിലാളികൾ - ഇലക്ട്രീഷ്യൻ, പ്ലംബർ മുതലായവ)</option>
           </select>
@@ -624,7 +624,7 @@
       },
       {
         name: "ലീല ആശാ വർക്കർ - വെളിമാനം (ASHA Worker)",
-        category: "Medical",
+        category: "ical",
         service: "Community Health & Maternal Care Support",
         location: "Velimanam Ward",
         phone: "+919656547535",
@@ -641,8 +641,8 @@
         hours: "8:00 AM - 8:00 PM"
       },
       {
-        name: "AJ Net പ്രാദേശിക പത്രപ്രവർത്തകൻ (Local Media Reporter)",
-        category: "Media",
+        name: "AJ Net പ്രാദേശിക പത്രപ്രവർത്തകൻ (Local ia Reporter)",
+        category: "ia",
         service: "Local News & Village Announcements",
         location: "Velimanam / Iritty",
         phone: "+919207409677",
@@ -754,7 +754,7 @@
         return { group: "Emergency", label: "🚓 Police / Fire / Emergency", cls: "badge-emergency" };
       }
       if (
-        catLower.includes("med") ||
+        catLower.includes("medical") ||
         catLower.includes("asha") ||
         catLower.includes("health") ||
         catLower.includes("hospital") ||
